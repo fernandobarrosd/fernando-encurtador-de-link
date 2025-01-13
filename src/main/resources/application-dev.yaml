@@ -1,0 +1,17 @@
+spring:
+    application:
+        name: fernando-encurtador-de-link
+    graphql:
+        schema:
+            file-extensions: 
+                - gql
+    datasource:
+        url: jdbc:postgresql://localhost:5432/encurtador_de_link_db
+        username: postgres
+        password: postgres
+    jpa:
+        show-sql: true
+        properties:
+            hibernate.format_sql: true
+        hibernate:
+            ddl-auto: create-drop

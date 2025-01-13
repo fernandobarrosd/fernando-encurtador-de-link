@@ -1,0 +1,15 @@
+spring:
+    application:
+        name: fernando-encurtador-de-link
+    graphql:
+        schema:
+            file-extensions: 
+                - gql
+    datasource:
+        url: ${DATABASE_URL}
+        username: ${DATABASE_USERNAME}
+        password: ${DATABASE_PASSWORD}
+
+    jpa:
+        hibernate:
+            ddl-auto: update
