@@ -1,5 +1,7 @@
 package br.com.fernando.fernando_encurtador_de_link.services;
 
+import java.util.Optional;
+
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
 import br.com.fernando.fernando_encurtador_de_link.entities.ShortLinkEntity;
@@ -38,12 +40,13 @@ public class ShortLinkService {
     }
 
     public String getOriginalLink(String shortLinkURL) {
-        ShortLinkEntity shortLink = shortLinkRepository.findByShortLink(shortLinkURL)
-        .orElseThrow(() -> new EntityNotFoundException(
-            "Short link %s is not exists".formatted(shortLinkURL)));
+        Optional<ShortLinkEntity> shortLinkOptional = shortLinkRepository.findByShortLink(shortLinkURL);
 
+        if (shortLinkOptional.isEmpty()) {
+            return null;
+        }
         
-        return shortLink.getOriginalLink();
+        return shortLinkOptional.get().getOriginalLink();
     }
 
 }
