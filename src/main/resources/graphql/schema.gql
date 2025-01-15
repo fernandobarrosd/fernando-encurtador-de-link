@@ -1,0 +1,15 @@
+scalar UUID
+
+type ShortLink {
+    id: UUID
+    originalLink: String
+    shortLink: String
+}
+
+type Query {
+    _empty: String
+}
+
+type Mutation {
+    saveShortLink(url: String) : ShortLink
+}
