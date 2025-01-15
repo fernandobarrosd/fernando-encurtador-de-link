@@ -79,10 +79,11 @@ public class ShortLinkControllerTest {
         String originalLinkURL = null;
         ShortLinkRequest request = new ShortLinkRequest(originalLinkURL);
 
-        Map<String, String> field = new HashMap<>();
-        field.put("url", "url field is required");
+        Map<String, String> fieldMap = new HashMap<>();
+        fieldMap.put("name", "url");
+        fieldMap.put("message", "url field is required");
 
-        List<Map<String, String>> fields = List.of(field);
+        List<Map<String, String>> fields = List.of(fieldMap);
 
         var errorResponse = ValidationErrorResponse.builder()
             .path("/short-link")
@@ -106,10 +107,11 @@ public class ShortLinkControllerTest {
         String originalLinkURL = "invalid-url";
         ShortLinkRequest request = new ShortLinkRequest(originalLinkURL);
 
-        Map<String, String> field = new HashMap<>();
-        field.put("url", "url field should be url format");
+        Map<String, String> fieldMap = new HashMap<>();
+        fieldMap.put("name", "url");
+        fieldMap.put("message", "url field should be url format");
 
-        List<Map<String, String>> fields = List.of(field);
+        List<Map<String, String>> fields = List.of(fieldMap);
 
         var errorResponse = ValidationErrorResponse.builder()
             .path("/short-link")
@@ -126,5 +128,34 @@ public class ShortLinkControllerTest {
         )
         .andExpect(status().isBadRequest())
         .andExpect(content().json(objectMapper.writeValueAsString(errorResponse)));
+    }
+
+    @Test
+    public void shouldRedirectToOriginalLink() throws Exception {
+        String originalLinkURL = "teste.com";
+        String shortLinkURL = "shortLink";
+
+        when(shortLinkService.getOriginalLink(shortLinkURL))
+        .thenReturn(originalLinkURL);
+
+        mockMvc.perform(
+            get("/" + shortLinkURL)
+        )
+        .andExpect(status().isMovedPermanently())
+        .andExpect(header().string("Location", originalLinkURL));
+    }
+
+    @Test
+    public void shouldNotRedirectToOriginalLinkAndReturnStatusCode404NotFound() throws Exception {
+        String shortLinkURL = "shortLink";
+
+        when(shortLinkService.getOriginalLink(shortLinkURL)).thenReturn(null);
+
+        mockMvc.perform(
+            get("/" + shortLinkURL)
+            .content("text/plain")
+        )
+        .andExpect(status().isNotFound())
+        .andExpect(content().string("<h1>The short link in the URL is not linked to any URL</h1>"));
     }
 }
