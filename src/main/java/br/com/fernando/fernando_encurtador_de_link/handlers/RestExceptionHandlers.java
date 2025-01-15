@@ -36,9 +36,10 @@ public class RestExceptionHandlers {
                 .body(validationErrorResponse);
         }
     private Map<String, String> convertFieldErrorToMap(FieldError fieldError) {
-        Map<String, String> fields = new HashMap<>();
-        fields.put(fieldError.getField(), fieldError.getDefaultMessage());
+        Map<String, String> fieldMap = new HashMap<>();
+        fieldMap.put("name", fieldError.getField());
+        fieldMap.put("message", fieldError.getDefaultMessage());
         
-        return fields;
+        return fieldMap;
     }
 }
