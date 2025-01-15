@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import br.com.fernando.fernando_encurtador_de_link.exceptions.EntityNotFoundException;
 import br.com.fernando.fernando_encurtador_de_link.rest.requests.ShortLinkRequest;
 import br.com.fernando.fernando_encurtador_de_link.rest.responses.ShortLinkResponse;
 import br.com.fernando.fernando_encurtador_de_link.services.ShortLinkService;
@@ -28,16 +27,14 @@ public class ShortLinkController {
 
     @GetMapping("/{shortLink}")
     public ResponseEntity<String> redirectToOriginalLink(@PathVariable String shortLink) {
-        try {
-            String originalLink = shortLinkService.getOriginalLink(shortLink);
+        String originalLink = shortLinkService.getOriginalLink(shortLink);
 
+        if (originalLink != null) {
             return ResponseEntity.status(HttpStatus.MOVED_PERMANENTLY)
             .header(HttpHeaders.LOCATION, originalLink)
             .build();
         }
-        catch (EntityNotFoundException exception) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
             .body("<h1>The short link in the URL is not linked to any URL</h1>");
-        }
     }
 }
