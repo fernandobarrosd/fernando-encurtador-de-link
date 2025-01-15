@@ -5,6 +5,8 @@ spring:
         schema:
             file-extensions: 
                 - gql
+        graphiql:
+            enabled: true 
     datasource:
         url: jdbc:postgresql://localhost:5432/encurtador_de_link_db
         username: postgres

@@ -5,6 +5,8 @@ spring:
         schema:
             file-extensions: 
                 - gql
+        graphiql:
+            enabled: true
     datasource:
         url: ${DATABASE_URL}
         username: ${DATABASE_USERNAME}
