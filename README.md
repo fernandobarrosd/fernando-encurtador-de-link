@@ -49,8 +49,8 @@ Interface gráfica do GraphQL: http://localhost:8080/graphiql
 
 ## Links
 
-API Rest: /
-API GraphQL: /graphql
+API Rest: https://fernando-encurtador-de-link.koyeb.app/
+API GraphQL: https://fernando-encurtador-de-link.koyeb.app/graphql
 
-Documentação da API Rest: /docs/ui
-Interface gráfica do GraphQL: /graphiql
+Documentação da API Rest: https://fernando-encurtador-de-link.koyeb.app/docs/ui
+Interface gráfica do GraphQL: https://fernando-encurtador-de-link.koyeb.app/graphiql
