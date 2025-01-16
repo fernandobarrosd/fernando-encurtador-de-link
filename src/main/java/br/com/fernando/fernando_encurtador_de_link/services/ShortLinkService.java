@@ -1,11 +1,9 @@
 package br.com.fernando.fernando_encurtador_de_link.services;
 
 import java.util.Optional;
-
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
 import br.com.fernando.fernando_encurtador_de_link.entities.ShortLinkEntity;
-import br.com.fernando.fernando_encurtador_de_link.exceptions.EntityNotFoundException;
 import br.com.fernando.fernando_encurtador_de_link.graphql.types.ShortLink;
 import br.com.fernando.fernando_encurtador_de_link.repositories.ShortLinkRepository;
 import br.com.fernando.fernando_encurtador_de_link.rest.requests.ShortLinkRequest;

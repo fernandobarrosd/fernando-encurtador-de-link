@@ -13,7 +13,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 import br.com.fernando.fernando_encurtador_de_link.entities.ShortLinkEntity;
-import br.com.fernando.fernando_encurtador_de_link.exceptions.EntityNotFoundException;
 import br.com.fernando.fernando_encurtador_de_link.graphql.types.ShortLink;
 import br.com.fernando.fernando_encurtador_de_link.repositories.ShortLinkRepository;
 import br.com.fernando.fernando_encurtador_de_link.rest.requests.ShortLinkRequest;
@@ -100,22 +99,15 @@ public class ShortLinkServiceTest {
     }
 
     @Test
-    public void shouldThrowsEntityNotFoundExceptionWhenCallGetOriginalLink() {
+    public void shouldReturnNullWhenCallGetOriginalLink() {
         String shortLinkURL = "shortLink";
-        String shortLinkIsNotExistsMessage = "Short link %s is not exists"
-        .formatted(shortLinkURL);
 
         when(shortLinkRepository.findByShortLink(shortLinkURL))
         .thenReturn(Optional.empty());
 
-        EntityNotFoundException exception = 
-        assertThrows(
-            EntityNotFoundException.class,
-            () -> shortLinkService.getOriginalLink(shortLinkURL)
-        );
+        String originalLink = shortLinkService.getOriginalLink(shortLinkURL);
 
-
-        assertEquals(exception.getMessage(), shortLinkIsNotExistsMessage);
+        assertNull(originalLink);
 
     }
 }
