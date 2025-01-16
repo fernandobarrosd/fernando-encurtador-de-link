@@ -1,3 +1,9 @@
+springdoc:
+  swagger-ui:
+    path: /docs/ui
+  api-docs:
+    path: /docs
+    
 spring:
     application:
         name: fernando-encurtador-de-link
