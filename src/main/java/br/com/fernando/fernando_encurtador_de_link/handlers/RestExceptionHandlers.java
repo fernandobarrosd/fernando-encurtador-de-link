@@ -9,6 +9,8 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import br.com.fernando.fernando_encurtador_de_link.rest.responses.FieldResponse;
 import br.com.fernando.fernando_encurtador_de_link.rest.responses.error.ValidationErrorResponse;
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -20,7 +22,7 @@ public class RestExceptionHandlers {
         HttpServletRequest request) {
             HttpStatus httpStatusCode = HttpStatus.BAD_REQUEST;
 
-            List<Map<String, String>> fields = exception.getFieldErrors()
+            List<FieldResponse> fields = exception.getFieldErrors()
             .stream()
             .map((field) -> convertFieldErrorToMap(field))
             .toList();
@@ -35,11 +37,10 @@ public class RestExceptionHandlers {
             return ResponseEntity.badRequest()
                 .body(validationErrorResponse);
         }
-    private Map<String, String> convertFieldErrorToMap(FieldError fieldError) {
-        Map<String, String> fieldMap = new HashMap<>();
-        fieldMap.put("name", fieldError.getField());
-        fieldMap.put("message", fieldError.getDefaultMessage());
-        
-        return fieldMap;
+    private FieldResponse convertFieldErrorToMap(FieldError fieldError) {
+        return FieldResponse.builder()
+        .name(fieldError.getField())
+        .message(fieldError.getDefaultMessage())
+        .build();
     }
 }
