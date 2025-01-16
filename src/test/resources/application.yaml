@@ -1,0 +1,7 @@
+spring:
+    application:
+        name: fernando-encurtador-de-link
+    graphql:
+        schema:
+            file-extensions: 
+                - gql
