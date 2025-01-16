@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import br.com.fernando.fernando_encurtador_de_link.rest.docs.ShortLinkControllerDocs;
 import br.com.fernando.fernando_encurtador_de_link.rest.requests.ShortLinkRequest;
 import br.com.fernando.fernando_encurtador_de_link.rest.responses.ShortLinkResponse;
 import br.com.fernando.fernando_encurtador_de_link.services.ShortLinkService;
@@ -16,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-public class ShortLinkController {
+public class ShortLinkController implements ShortLinkControllerDocs {
     private final ShortLinkService shortLinkService;
 
     @PostMapping("/short-link")
