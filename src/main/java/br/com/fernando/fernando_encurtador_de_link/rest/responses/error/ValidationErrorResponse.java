@@ -1,7 +1,6 @@
 package br.com.fernando.fernando_encurtador_de_link.rest.responses.error;
 
 import java.util.List;
-import java.util.Map;
 import br.com.fernando.fernando_encurtador_de_link.rest.responses.FieldResponse;
 import lombok.Builder;
 import lombok.Getter;
