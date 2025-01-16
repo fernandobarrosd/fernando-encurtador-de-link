@@ -2,6 +2,7 @@ package br.com.fernando.fernando_encurtador_de_link.rest.responses.error;
 
 import java.util.List;
 import java.util.Map;
+import br.com.fernando.fernando_encurtador_de_link.rest.responses.FieldResponse;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -13,5 +14,5 @@ public class ValidationErrorResponse {
     private final String message;
     private final String path;
     private final Integer statusCode;
-    private final List<Map<String, String>> fields;
+    private final List<FieldResponse> fields;
 }
