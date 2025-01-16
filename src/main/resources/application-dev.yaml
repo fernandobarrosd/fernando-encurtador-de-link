@@ -8,6 +8,9 @@ spring:
     application:
         name: fernando-encurtador-de-link
     graphql:
+        cors:
+            allowed-origins: 
+                - "*"
         schema:
             file-extensions: 
                 - gql
