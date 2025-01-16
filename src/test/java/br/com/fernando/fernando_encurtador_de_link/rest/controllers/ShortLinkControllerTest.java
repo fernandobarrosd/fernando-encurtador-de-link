@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import br.com.fernando.fernando_encurtador_de_link.repositories.ShortLinkRepository;
 import br.com.fernando.fernando_encurtador_de_link.rest.requests.ShortLinkRequest;
+import br.com.fernando.fernando_encurtador_de_link.rest.responses.FieldResponse;
 import br.com.fernando.fernando_encurtador_de_link.rest.responses.ShortLinkResponse;
 import br.com.fernando.fernando_encurtador_de_link.rest.responses.error.ValidationErrorResponse;
 import br.com.fernando.fernando_encurtador_de_link.services.ShortLinkService;
@@ -79,11 +80,12 @@ public class ShortLinkControllerTest {
         String originalLinkURL = null;
         ShortLinkRequest request = new ShortLinkRequest(originalLinkURL);
 
-        Map<String, String> fieldMap = new HashMap<>();
-        fieldMap.put("name", "url");
-        fieldMap.put("message", "url field is required");
+        FieldResponse field = FieldResponse.builder()
+        .name("url")
+        .message("url field is required")
+        .build();
 
-        List<Map<String, String>> fields = List.of(fieldMap);
+        List<FieldResponse> fields = List.of(field);
 
         var errorResponse = ValidationErrorResponse.builder()
             .path("/short-link")
@@ -107,11 +109,12 @@ public class ShortLinkControllerTest {
         String originalLinkURL = "invalid-url";
         ShortLinkRequest request = new ShortLinkRequest(originalLinkURL);
 
-        Map<String, String> fieldMap = new HashMap<>();
-        fieldMap.put("name", "url");
-        fieldMap.put("message", "url field should be url format");
+        FieldResponse field = FieldResponse.builder()
+        .name("url")
+        .message("url field should be url format")
+        .build();
 
-        List<Map<String, String>> fields = List.of(fieldMap);
+        List<FieldResponse> fields = List.of(field);
 
         var errorResponse = ValidationErrorResponse.builder()
             .path("/short-link")
