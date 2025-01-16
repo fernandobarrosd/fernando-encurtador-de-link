@@ -10,6 +10,7 @@ Uma API pra gerar links encurtados com Java, PostgresQL, Spring Boot e GraphQL.
 - Spring Web
 - Spring Data JPA
 - Spring GraphQL
+- Swagger
 - PostgresQL
 
 
@@ -27,11 +28,12 @@ Uma API pra gerar links encurtados com Java, PostgresQL, Spring Boot e GraphQL.
 
 
 ## Rodar o projeto local (**sem docker**)
-
+### Passos
 - ./scripts/run.sh
 
 
 ## Rodar o projeto local (**com docker**)
+### Passos
 
 - docker compose -f docker-compose.yaml up -d (**uma vez só**)
 - docker compose -f docker-compose.yaml start (**quando a aplicação tenha parado e queira rodar denovo**)
@@ -40,17 +42,17 @@ Uma API pra gerar links encurtados com Java, PostgresQL, Spring Boot e GraphQL.
 
 ## Links (localhost)
 
-API Rest: http://localhost:8080/
-API GraphQL: http://localhost:8080/graphql
+- API Rest: http://localhost:8080/
+- API GraphQL: http://localhost:8080/graphql
 
-Documentação da API Rest: http://localhost:8080/docs/ui
-Interface gráfica do GraphQL: http://localhost:8080/graphiql
+- Documentação da API Rest: http://localhost:8080/docs/ui
+- Interface gráfica do GraphQL: http://localhost:8080/graphiql
 
 
 ## Links
 
-API Rest: https://fernando-encurtador-de-link.koyeb.app/
-API GraphQL: https://fernando-encurtador-de-link.koyeb.app/graphql
+- API Rest: https://fernando-encurtador-de-link.koyeb.app/
+- API GraphQL: https://fernando-encurtador-de-link.koyeb.app/graphql
 
-Documentação da API Rest: https://fernando-encurtador-de-link.koyeb.app/docs/ui
-Interface gráfica do GraphQL: https://fernando-encurtador-de-link.koyeb.app/graphiql
+- Documentação da API Rest: https://fernando-encurtador-de-link.koyeb.app/docs/ui
+- Interface gráfica do GraphQL: https://fernando-encurtador-de-link.koyeb.app/graphiql
