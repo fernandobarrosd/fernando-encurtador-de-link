@@ -38,10 +38,19 @@ Uma API pra gerar links encurtados com Java, PostgresQL, Spring Boot e GraphQL.
 - ./scripts/run.sh
 
 
+## Links (localhost)
+
+API Rest: http://localhost:8080/
+API GraphQL: http://localhost:8080/graphql
+
+Documentação da API Rest: http://localhost:8080/docs/ui
+Interface gráfica do GraphQL: http://localhost:8080/graphiql
+
 
 ## Links
 
-API Rest: 
-API GraphQL: 
+API Rest: /
+API GraphQL: /graphql
 
-Documentação da API Rest: 
+Documentação da API Rest: /docs/ui
+Interface gráfica do GraphQL: /graphiql
