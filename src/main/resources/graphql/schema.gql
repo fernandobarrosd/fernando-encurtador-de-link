@@ -11,5 +11,6 @@ type Query {
 }
 
 type Mutation {
+    "Generate and save short link"
     saveShortLink(url: String) : ShortLink
 }
